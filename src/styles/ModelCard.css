@@ -20,6 +20,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.model-card:hover .model-image img {
+  transform: scale(1.1);
 }
 
 .model-badges {
@@ -36,6 +41,9 @@
   border-radius: 3px;
   font-size: 0.8rem;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .badge.featured {
@@ -71,4 +79,7 @@
   margin-top: 0.5rem;
   color: #aaa;
   font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }

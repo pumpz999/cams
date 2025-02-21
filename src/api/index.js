@@ -9,12 +9,23 @@ const CAM_APIS = {
   stripchat
 };
 
-export const getModels = async () => {
+const CACHE_DURATION = 180000; // 3 minutes
+
+let lastFetchTime = 0;
+let cachedModels = [];
+
+export const getModels = async (forceRefresh = false) => {
+  const now = Date.now();
+  
+  if (!forceRefresh && now - lastFetchTime < CACHE_DURATION) {
+    return cachedModels;
+  }
+
   try {
     const apiPromises = Object.values(CAM_APIS).map(api => api.getModels());
     const results = await Promise.all(apiPromises);
     
-    const allModels = results.flat().map(model => ({
+    cachedModels = results.flat().map(model => ({
       ...model,
       source: model.source || 'xlovecam',
       category: model.category || 'regular',
@@ -23,7 +34,8 @@ export const getModels = async () => {
       lastUpdated: Date.now()
     }));
 
-    return _.orderBy(allModels, ['isFeatured', 'isPremium', 'views'], ['desc', 'desc', 'desc']);
+    lastFetchTime = now;
+    return _.orderBy(cachedModels, ['isFeatured', 'isPremium', 'views'], ['desc', 'desc', 'desc']);
   } catch (error) {
     console.error('Error fetching models:', error);
     throw error;

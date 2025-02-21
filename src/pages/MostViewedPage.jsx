@@ -3,13 +3,13 @@ import CategoryNavigation from '../components/CategoryNavigation';
 import ModelGrid from '../components/ModelGrid';
 import '../styles/HomePage.css';
 
-const HomePage = () => {
+const MostViewedPage = () => {
   return (
     <div className="home-page">
       <CategoryNavigation />
-      <ModelGrid />
+      <ModelGrid category="most-viewed" />
     </div>
   );
 };
 
-export default HomePage;
+export default MostViewedPage;

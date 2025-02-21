@@ -6,7 +6,14 @@
 }
 
 .loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.error-message {
+  color: #ff6b6b;
   text-align: center;
   padding: 2rem;
-  color: #ddd;
 }

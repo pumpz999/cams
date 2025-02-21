@@ -3,7 +3,7 @@ import CategoryNavigation from '../components/CategoryNavigation';
 import ModelGrid from '../components/ModelGrid';
 import '../styles/HomePage.css';
 
-const HomePage = () => {
+const AllModelsPage = () => {
   return (
     <div className="home-page">
       <CategoryNavigation />
@@ -12,4 +12,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default AllModelsPage;

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { PulseLoader } from 'react-spinners';
 import ModelCard from './ModelCard';
 import { getModels } from '../api';
+import { showErrorToast } from './ToastNotifications';
 import '../styles/ModelGrid.css';
 
 const ModelGrid = ({ category, source }) => {
   const [models, setModels] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const fetchModels = async () => {
     try {
@@ -31,8 +34,11 @@ const ModelGrid = ({ category, source }) => {
       }
 
       setModels(filteredModels);
+      setError(null);
     } catch (error) {
       console.error('Error fetching models:', error);
+      setError('Failed to load models');
+      showErrorToast('Failed to load models. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -44,14 +50,22 @@ const ModelGrid = ({ category, source }) => {
     return () => clearInterval(interval);
   }, [category, source]);
 
+  if (error) {
+    return <div className="error-message">{error}</div>;
+  }
+
   if (loading) {
-    return <div className="loading">Loading models...</div>;
+    return (
+      <div className="loading">
+        <PulseLoader color="#ff6b6b" size={15} />
+      </div>
+    );
   }
 
   return (
     <div className="model-grid">
       {models.map(model => (
-        <ModelCard key={`${model.id}-${model.source}`} model={model} />
+        <ModelCard key={`${model.id}-${model.source}-${model.lastUpdated}`} model={model} />
       ))}
     </div>
   );

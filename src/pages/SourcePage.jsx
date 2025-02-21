@@ -1,15 +1,17 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import CategoryNavigation from '../components/CategoryNavigation';
 import ModelGrid from '../components/ModelGrid';
 import '../styles/HomePage.css';
 
-const HomePage = () => {
+const SourcePage = () => {
+  const { source } = useParams();
   return (
     <div className="home-page">
       <CategoryNavigation />
-      <ModelGrid />
+      <ModelGrid source={source} />
     </div>
   );
 };
 
-export default HomePage;
+export default SourcePage;
