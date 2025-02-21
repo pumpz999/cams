@@ -1,0 +1,13 @@
+/* Custom toast styles */
+.Toastify__toast {
+  border-radius: 5px !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.Toastify__toast--success {
+  background: #4caf50 !important;
+}
+
+.Toastify__toast--error {
+  background: #ff6b6b !important;
+}

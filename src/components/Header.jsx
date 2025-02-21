@@ -1,14 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/global.css';
+import { FaBars } from 'react-icons/fa';
+import '../styles/Header.css';
 
 const Header = () => {
   return (
-    <header>
-      <h1>XxxCams.org</h1>
-      <nav>
-        <Link to="/admin">Admin Panel</Link>
-      </nav>
+    <header className="header">
+      <div className="header-content">
+        <button className="menu-toggle">
+          <FaBars />
+        </button>
+        <h1>XxxCams.org</h1>
+      </div>
     </header>
   );
 };
