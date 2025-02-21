@@ -1,0 +1,14 @@
+.home-page {
+  padding: 2rem;
+}
+
+.category-section, .source-section {
+  margin-bottom: 3rem;
+}
+
+.category-section h2, .source-section h2 {
+  color: #ff6b6b;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(255, 107, 107, 0.3);
+  padding-bottom: 0.5rem;
+}
