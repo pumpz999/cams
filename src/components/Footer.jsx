@@ -1,28 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import './Footer.css';
 
 const Footer = () => {
-  const [searchHistory, setSearchHistory] = useState([]);
-
-  useEffect(() => {
-    // Fetch search history from the server or local storage
-    const history = ['Blonde', 'Latina', 'Mature', 'Fetish'];
-    setSearchHistory(history);
-  }, []);
-
   return (
     <footer>
-      <div className="search-history">
-        <h3>Previous Searches</h3>
-        <ul>
-          {searchHistory.map((search) => (
-            <li key={search}>
-              <a href={`/models?category=${search.toLowerCase()}`}>{search}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="footer-info">
-        <p>&copy; 2023 XxxCams.org. All rights reserved.</p>
+      <div className="footer-content">
+        <div className="disclaimer">
+          <h3>Safety & Disclaimer</h3>
+          <p>
+            This platform is intended for adults only (18+). All models are verified
+            and of legal age. We prioritize user safety and privacy. Please use
+            responsibly.
+          </p>
+        </div>
+        
+        <div className="api-info">
+          <h3>API Information</h3>
+          <p>
+            Powered by XloveCam API v2.0. Real-time data updates. Secure
+            connections only.
+          </p>
+        </div>
+        
+        <div className="legal">
+          <p>&copy; {new Date().getFullYear()} XxxCams.org</p>
+          <p>All rights reserved</p>
+        </div>
       </div>
     </footer>
   );
